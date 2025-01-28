@@ -6,7 +6,6 @@ import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
 
-// import Navbar from "./components/Navbar";
 import { useUserStore } from "./stores/useUserStore";
 import { useEffect } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -14,7 +13,7 @@ import CartPage from "./pages/CartPage";
 import { useCartStore } from "./stores/useCartStore";
 import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 import PurchaseCancelPage from "./pages/PurchaseCancelPage";
-import UpperBar from "./components/Navbar";
+import UpperBar from './UpperBar.jsx'
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
