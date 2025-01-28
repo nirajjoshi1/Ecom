@@ -1,14 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import cors from 'cors';
+import cors from "cors";
+
 import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
 import cartRoutes from "./routes/cart.route.js";
 import couponRoutes from "./routes/coupon.route.js";
 import paymentRoutes from "./routes/payment.route.js";
 import analyticsRoutes from "./routes/analytics.route.js";
-
 import { connectDB } from "./lib/db.js";
 
 dotenv.config();
@@ -16,11 +16,19 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CORS options
+const corsOptions = {
+  origin: process.env.CLIENT_URL || "http://localhost:3000", // Replace with your frontend's URL
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
+  credentials: true, // Allow credentials (cookies, headers)
+};
 
-app.use(express.json({ limit: "10mb" })); // allows you to parse the body of the request
+// Middleware
+app.use(cors(corsOptions));
+app.use(express.json({ limit: "10mb" })); // Parse JSON bodies
 app.use(cookieParser());
-app.use(cors());
 
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
@@ -28,8 +36,8 @@ app.use("/api/coupons", couponRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
-
+// Start server
 app.listen(PORT, () => {
-	console.log("Server is running on http://aaa:" + PORT);
-	connectDB();
+  console.log("Server is running on http://localhost:" + PORT);
+  connectDB();
 });
