@@ -14,6 +14,7 @@ import CartPage from "./pages/CartPage";
 import { useCartStore } from "./stores/useCartStore";
 import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 import PurchaseCancelPage from "./pages/PurchaseCancelPage";
+import UpperBar from "./components/Navbar";
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
@@ -40,6 +41,7 @@ function App() {
       </div>
 
       <div className="relative z-50 pt-20">
+
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
@@ -70,6 +72,7 @@ function App() {
             element={user ? <PurchaseCancelPage /> : <Navigate to="/login" />}
           />
         </Routes>
+        <UpperBar/>
       </div>
     </div>
   );
