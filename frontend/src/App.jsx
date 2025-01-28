@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
 
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import { useUserStore } from "./stores/useUserStore";
 import { useEffect } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -40,7 +40,6 @@ function App() {
       </div>
 
       <div className="relative z-50 pt-20">
-        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
